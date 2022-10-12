@@ -73,6 +73,7 @@
         <Button Content="Predict"
                 Command="{Binding AddPath}"
                 Grid.Column="11"
+                Grid.Row="12"
                 Background="CornflowerBlue"></Button>
         
         <Label Content="Training Time"

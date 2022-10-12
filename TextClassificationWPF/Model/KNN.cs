@@ -118,7 +118,7 @@ namespace TextClassificationWPF.Model
                 {
                     for (int y = 0; y < aDis.Length; y++)
                     {
-                        if (aDis[y] < a[i])
+                        if (aDis[y] > a[i])
                         {
                             aDis[y] = a[i];
                         }
@@ -136,7 +136,7 @@ namespace TextClassificationWPF.Model
                 {
                     for (int y = 0; y < bDis.Length; y++)
                     {
-                        if (bDis[y] < b[i])
+                        if (bDis[y] > b[i])
                         {
                             bDis[y] = b[i];
                         }
@@ -148,7 +148,7 @@ namespace TextClassificationWPF.Model
             {
                 for (int y = 0; y < bDis.Length; y++)
                 {
-                    if (item > bDis[y])
+                    if (item < bDis[y])
                     {
                         disAndTopic.Add(sport);
                     }
@@ -159,7 +159,7 @@ namespace TextClassificationWPF.Model
             {
                 for (int y = 0; y < aDis.Length; y++)
                 {
-                    if (item > aDis[y])
+                    if (item < aDis[y])
                     {
                         disAndTopic.Add(fairyTale);
                     }

@@ -12,6 +12,9 @@ using TextClassificationWPF.Business;
 using System.IO;
 using System.Windows.Shapes;
 using System.Windows;
+using System.Windows.Controls;
+using Microsoft;
+using System.Text.RegularExpressions;
 
 namespace TextClassificationWPF.ViewModel
 {
@@ -139,15 +142,23 @@ namespace TextClassificationWPF.ViewModel
 
         private void FNNPredict(object parameter) 
         {
-            if (knowledge == null) 
+            if (knowledge == null)
             {
                 return;
             }
-            string text = File.ReadAllText("C:\\Users\\rogen\\source\\repos\\TextClassification\\TextClassificationWPF\\Classes\\ClassC\\Old Sultan.txt");
-            KNN knn = new KNN(knowledge);
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".txt";
+            dlg.InitialDirectory = "C:\\Users\\rogen\\source\\repos\\extClassification\\TextClassificationWPF\\Classes\\ClassC";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                string text = File.ReadAllText(filename);
+                KNN knn = new KNN(knowledge);
 
-            string predict = knn.PredictTopic(text);
-            MessageBox.Show(predict);
+                string predict = knn.PredictTopic(text);
+                MessageBox.Show(predict);
+            }
         }
 
         /*
