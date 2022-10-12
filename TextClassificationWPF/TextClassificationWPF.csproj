@@ -108,6 +108,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\AddCommand.cs" />
     <Compile Include="Model\Bindable.cs" />
+    <Compile Include="Model\KNN.cs" />
     <Compile Include="ViewModel\KnowledgeViewModel.cs" />
     <Compile Include="View\KnowledgeView.xaml.cs">
       <DependentUpon>KnowledgeView.xaml</DependentUpon>
@@ -164,39 +165,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ClassA\A perfect journey Roger Federer.txt" />
-    <Resource Include="ClassA\bbcsportsfootball.txt" />
-    <Resource Include="ClassA\dailymirrornfl.txt" />
-    <Resource Include="ClassA\Denmark%27s 2022 World Cup kit.txt" />
-    <Resource Include="ClassA\Erik Ten Hag praised.txt" />
-    <Resource Include="ClassA\FIFA World Cup 2022.txt" />
-    <Resource Include="ClassA\It has been a glorious couple.txt" />
-    <Resource Include="ClassA\sunsportsboxing.txt" />
+    <Resource Include="Classes\ClassA\A perfect journey Roger Federer.txt" />
+    <Resource Include="Classes\ClassA\bbcsportsfootball.txt" />
+    <Resource Include="Classes\ClassA\dailymirrornfl.txt" />
+    <Resource Include="Classes\ClassA\Denmark%27s 2022 World Cup kit.txt" />
+    <Resource Include="Classes\ClassA\Erik Ten Hag praised.txt" />
+    <Resource Include="Classes\ClassA\FIFA World Cup 2022.txt" />
+    <Resource Include="Classes\ClassA\It has been a glorious couple.txt" />
+    <Resource Include="Classes\ClassA\sunsportsboxing.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ClassB\HanselAndGretel.txt" />
-    <Resource Include="ClassB\Pumpelstiltskin.txt" />
-    <Resource Include="ClassB\Rapunzel.txt" />
-    <Resource Include="ClassB\Snow White.txt" />
-    <Resource Include="ClassB\The Frog Prince.txt" />
-    <Resource Include="ClassB\The Golden Fish.txt" />
-    <Resource Include="ClassB\The Little Mermaid.txt" />
+    <Resource Include="Classes\ClassB\HanselAndGretel.txt" />
+    <Resource Include="Classes\ClassB\Pumpelstiltskin.txt" />
+    <Resource Include="Classes\ClassB\Rapunzel.txt" />
+    <Resource Include="Classes\ClassB\Snow White.txt" />
+    <Resource Include="Classes\ClassB\The Frog Prince.txt" />
+    <Resource Include="Classes\ClassB\The Golden Fish.txt" />
+    <Resource Include="Classes\ClassB\The Little Mermaid.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ClassC\Champions League.txt" />
-    <Resource Include="ClassC\eSports Could it become more popular.txt" />
-    <Resource Include="ClassC\Golf news.txt" />
-    <Resource Include="ClassC\Japanese Grand Prix.txt" />
-    <Resource Include="ClassC\Liverpool boss Jurgen Klopp criticises officials%27 decision-making during Premier League defeat to Arsenal.txt" />
-    <Resource Include="ClassC\Novak Djokovic reached the final.txt" />
-    <Resource Include="ClassC\Old Sultan.txt" />
-    <Resource Include="ClassC\Paris Saint Germain.txt" />
-    <Resource Include="ClassC\Scotland 0-1 Republic of Ireland.txt" />
-    <Resource Include="ClassC\Switzerland 2-1 Wales.txt" />
-    <Resource Include="ClassC\The Elven and the Shomaler.txt" />
-    <Resource Include="ClassC\The Golend Goose.txt" />
-    <Resource Include="ClassC\The Six Swans.txt" />
-    <Resource Include="ClassC\The White Snake.txt" />
+    <Resource Include="Classes\ClassC\Champions League.txt" />
+    <Resource Include="Classes\ClassC\eSports Could it become more popular.txt" />
+    <Resource Include="Classes\ClassC\Golf news.txt" />
+    <Resource Include="Classes\ClassC\Japanese Grand Prix.txt" />
+    <Resource Include="Classes\ClassC\Liverpool boss Jurgen Klopp criticises officials%27 decision-making during Premier League defeat to Arsenal.txt" />
+    <Resource Include="Classes\ClassC\Novak Djokovic reached the final.txt" />
+    <Resource Include="Classes\ClassC\Old Sultan.txt" />
+    <Resource Include="Classes\ClassC\Paris Saint Germain.txt" />
+    <Resource Include="Classes\ClassC\Scotland 0-1 Republic of Ireland.txt" />
+    <Resource Include="Classes\ClassC\Switzerland 2-1 Wales.txt" />
+    <Resource Include="Classes\ClassC\The Elven and the Shomaler.txt" />
+    <Resource Include="Classes\ClassC\The Golend Goose.txt" />
+    <Resource Include="Classes\ClassC\The Six Swans.txt" />
+    <Resource Include="Classes\ClassC\The White Snake.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

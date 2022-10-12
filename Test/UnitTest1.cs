@@ -50,27 +50,6 @@ namespace Test
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void TestFileGetAllFileNames()
-        {
-            // arrange
-            string folderA = "ClassA";
-            string fileType = "txt";
-            List<string> expected = new List<string>();
-            expected.Add("C:\\Users\\Bruger\\source\\repos\\My Work\\week 40\\TextClassificationWPF\\TextClassificationWPF\\bin\\Debug\\" + folderA + "\\bbcsportsfootball." + fileType);
-            expected.Add("C:\\Users\\Bruger\\source\\repos\\My Work\\week 40\\TextClassificationWPF\\TextClassificationWPF\\bin\\Debug\\" + folderA + "\\dailymirrornfl." + fileType);
-            expected.Add("C:\\Users\\Bruger\\source\\repos\\My Work\\week 40\\TextClassificationWPF\\TextClassificationWPF\\bin\\Debug\\" + folderA + "\\sunsportsboxing." + fileType);
-
-            // act
-            FileAdapter fa = new TextFile(fileType);
-            List<string> actual = fa.GetAllFileNames(folderA);
-
-            // assert
-            Assert.AreEqual(expected.Count, actual.Count);
-            Assert.AreEqual(expected[0], actual[0]);
-            Assert.AreEqual(expected[1], actual[1]);
-            Assert.AreEqual(expected[2], actual[2]);
-        }
 
         [Test]
         public void TestGetFilePathA()
@@ -79,7 +58,7 @@ namespace Test
             string folderA = "ClassA";
             string fileType = "txt";
             string fileName = "filnavn";
-            string expected = "C:\\Users\\Bruger\\source\\repos\\My Work\\week 40\\TextClassificationWPF\\TextClassificationWPF\\bin\\Debug\\" + folderA + "\\filnavn." + fileType;
+            string expected = "C:\\Users\\rogen\\source\\repos\\TextClassification\\TextClassificationWPF\\Classes\\" + folderA + "\\filnavn." + fileType;
 
             // act
             TextFile tf = new TextFile(fileType);
@@ -182,7 +161,7 @@ namespace Test
         [Test]
         public void TestVectorPosetionOne() {
             // arragne
-            bool expected = true;
+            bool expected = false;
 
             // act
             KnowledgeBuilder kb = new KnowledgeBuilder();
@@ -214,7 +193,7 @@ namespace Test
         public void TestVectorPosetionThree()
         {
             // arragne
-            bool expected = false;
+            bool expected = true;
 
             // act
             KnowledgeBuilder kb = new KnowledgeBuilder();

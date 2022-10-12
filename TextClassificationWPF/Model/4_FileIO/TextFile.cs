@@ -10,7 +10,7 @@ namespace TextClassificationWPF.FileIO
 {
     public class TextFile:FileAdapter
     {
-        const string PROJECTPATH = "C:\\Users\\Bruger\\source\\repos\\My Work\\week 40\\TextClassificationWPF\\TextClassificationWPF\\bin\\Debug\\";
+        const string PROJECTPATH = "C:\\Users\\rogen\\source\\repos\\TextClassification\\TextClassificationWPF\\Classes\\";
 
         const string FOLDERA = "ClassA";
         const string FOLDERB = "ClassB";

@@ -10,6 +10,8 @@ using TextClassificationWPF.Foundation;
 using System.Collections.ObjectModel;
 using TextClassificationWPF.Business;
 using System.IO;
+using System.Windows.Shapes;
+using System.Windows;
 
 namespace TextClassificationWPF.ViewModel
 {
@@ -89,7 +91,7 @@ namespace TextClassificationWPF.ViewModel
         }
 
         private ObservableCollection<WordItem> listOfWordItems = new ObservableCollection<WordItem>();
-        
+
         public ObservableCollection<WordItem> ListOfWordItems
         {
             get { return listOfWordItems; }
@@ -97,10 +99,14 @@ namespace TextClassificationWPF.ViewModel
                 PropertyIsChanged();
             }
         }
-        
+
         public KnowledgeViewModel()
         {
             Lerne = new AddCommand(StarLerning);
+            Show = new AddCommand(GetFileInfo);
+            Search = new AddCommand(FindWord);
+            AddPath = new AddCommand(FNNPredict);
+
         }
 
         /*
@@ -120,7 +126,7 @@ namespace TextClassificationWPF.ViewModel
             // get a part of the knowledge - here just for debugging
             bagOfWords = knowledge.GetBagOfWords();
             ListOfWordItems = new ObservableCollection<WordItem>(bagOfWords.GetEntriesInDictionary());
-            
+
             GetFileNames();
             // the code that you want to measure comes here
             watch.Stop();
@@ -128,11 +134,20 @@ namespace TextClassificationWPF.ViewModel
             TrainingTime = elapsedMs;
 
             GetFileNames();
-            if (Show == null || Search == null) {
-                Show = new AddCommand(GetFileInfo);
-                Search = new AddCommand(FindWord);
-            }
+        }
 
+
+        private void FNNPredict(object parameter) 
+        {
+            if (knowledge == null) 
+            {
+                return;
+            }
+            string text = File.ReadAllText("C:\\Users\\rogen\\source\\repos\\TextClassification\\TextClassificationWPF\\Classes\\ClassC\\Old Sultan.txt");
+            KNN knn = new KNN(knowledge);
+
+            string predict = knn.PredictTopic(text);
+            MessageBox.Show(predict);
         }
 
         /*
@@ -167,6 +182,10 @@ namespace TextClassificationWPF.ViewModel
          */
         private void FindWord(object parameter)
         {
+            if (knowledge == null)
+            {
+                return;
+            }
             // her we creat a ne ObservableCollection for the words we looking up
             ListOfWordItems = new ObservableCollection<WordItem>();
 
@@ -191,6 +210,10 @@ namespace TextClassificationWPF.ViewModel
          */
         private void GetFileInfo(object parameter) 
         {
+            if (knowledge == null)
+            {
+                return;
+            }
             // Here we create a new BagOfWords to contain the wordts of the chosen file
             bagOfWords = new BagOfWords();
             string text ="";
