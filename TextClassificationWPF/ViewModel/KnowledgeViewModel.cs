@@ -197,15 +197,23 @@ namespace TextClassificationWPF.ViewModel
             {
                 return;
             }
-            // her we creat a ne ObservableCollection for the words we looking up
-            ListOfWordItems = new ObservableCollection<WordItem>();
 
-            // her we looping through our bagOfWords
-            foreach (WordItem item in bagOfWords.GetEntriesInDictionary())
+            if (SearchWord != null && searchWord != "")
             {
-                // if the word equels or starts with the chars the word will be added to our list
-                if(item.Word.Equals(SearchWord) || item.Word.StartsWith(SearchWord))
-                ListOfWordItems.Add(item);
+                // her we creat a ne ObservableCollection for the words we looking up
+                ListOfWordItems = new ObservableCollection<WordItem>();
+                // her we looping through our bagOfWords
+                foreach (WordItem item in bagOfWords.GetEntriesInDictionary())
+                {
+
+                    // if the word equels or starts with the chars the word will be added to our list
+                    if (item.Word.Equals(SearchWord) || item.Word.StartsWith(SearchWord))
+                        ListOfWordItems.Add(item);
+                }
+            }
+            else
+            {
+                ListOfWordItems = new ObservableCollection<WordItem>(bagOfWords.GetEntriesInDictionary());
             }
             // dirty clean up of textfield
             SearchWord = "";
@@ -226,7 +234,7 @@ namespace TextClassificationWPF.ViewModel
                 return;
             }
             // Here we create a new BagOfWords to contain the wordts of the chosen file
-            bagOfWords = new BagOfWords();
+            BagOfWords bagOfWordsLocal = new BagOfWords();
             string text ="";
 
             // Here we iterate througe the list of parths to check each file
@@ -257,11 +265,11 @@ namespace TextClassificationWPF.ViewModel
             //Here we go througe the list and add the words to the bagOfWords
             foreach (string word in wordsInFile)
             {
-                bagOfWords.InsertEntry(word);
+                bagOfWordsLocal.InsertEntry(word);
             }
             
             // Here we create e new ObservableCollection withe the list from bachOfWords
-            ListOfWordItems = new ObservableCollection<WordItem>(bagOfWords.GetEntriesInDictionary());
+            ListOfWordItems = new ObservableCollection<WordItem>(bagOfWordsLocal.GetEntriesInDictionary());
         }
 
     }
