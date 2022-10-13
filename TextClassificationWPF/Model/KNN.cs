@@ -148,29 +148,25 @@ namespace TextClassificationWPF.Model
                 }
             }
 
-            int countResultIndex = 0;
-            int aDisIndex = 0;
-            int bDisIndex = 0;
+            Array.Sort(aDis);
+            Array.Sort(bDis);
 
-            while (countResultIndex < KNNNeighbor)
+            List<double> aDisList = new List<double>(aDis);
+            List<double> bDisList = new List<double>(bDis);
+
+            for (int i = 0; i < KNNNeighbor; i++)
             {
-                Array.Sort(aDis);
-                Array.Sort(bDis);
-
-                if (aDis[0] < bDis[0]) 
+                if (aDisList[0] < bDisList[0]) 
                 {
-                    listResut[countResultIndex] = sport;
-                    aDis[0] = 100000000;
+                    listResut[i] = sport;
+                    aDisList.Remove(0);
                 }
                 else
                 {
-                    listResut[countResultIndex] = fairyTale;
-                    bDis[0] = 100000000;
+                    listResut[i] = fairyTale;
+                    bDisList.Remove(0);
                 }
-
-                countResultIndex++;
             }
-
 
             return listResut;
         }
