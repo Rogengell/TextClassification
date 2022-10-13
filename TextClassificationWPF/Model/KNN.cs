@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.PlatformUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace TextClassificationWPF.Model
     {
         string sport = "Sport";
         string fairyTale = "Fairy Tale";
+        int KNNNeighbor = 5;
 
         Knowledge knowledge;
         public KNN(Knowledge k) 
@@ -29,7 +31,7 @@ namespace TextClassificationWPF.Model
             List<double> disA = CalDistanceA(vector);
             List<double> disB = CalDistanceB(vector);
 
-            List<string> neighbors = NearestNeighbors(disA, disB);
+            string[] neighbors = NearestNeighbors(disA, disB);
 
             string predictiong = Predict(neighbors);
             return predictiong;
@@ -103,16 +105,16 @@ namespace TextClassificationWPF.Model
             return disA;
         }
 
-        private List<string> NearestNeighbors(List<double> a, List<double> b) 
+        private string[] NearestNeighbors(List<double> a, List<double> b) 
         {
-            List<string> disAndTopic = new List<string>();
+            string[] listResut = new string[KNNNeighbor];
             double[] aDis = new double[5];
             double[] bDis = new double[5];
             for (int i = 0; i < knowledge.GetFileLists().GetA().Count(); i++)
             {
                 if (i < 5)
                 {
-                    aDis[0] = a[i];
+                    aDis[i] = a[i];
                 }
                 else
                 {
@@ -121,6 +123,7 @@ namespace TextClassificationWPF.Model
                         if (aDis[y] > a[i])
                         {
                             aDis[y] = a[i];
+                            break;
                         }
                     } 
                 }
@@ -130,7 +133,7 @@ namespace TextClassificationWPF.Model
             {
                 if (i < 5)
                 {
-                    bDis[0] = b[i];
+                    bDis[i] = b[i];
                 }
                 else
                 {
@@ -139,37 +142,40 @@ namespace TextClassificationWPF.Model
                         if (bDis[y] > b[i])
                         {
                             bDis[y] = b[i];
+                            break;
                         }
                     }
                 }
             }
 
-            foreach (double item in aDis) 
+            int countResultIndex = 0;
+            int aDisIndex = 0;
+            int bDisIndex = 0;
+
+            while (countResultIndex < KNNNeighbor)
             {
-                for (int y = 0; y < bDis.Length; y++)
+                Array.Sort(aDis);
+                Array.Sort(bDis);
+
+                if (aDis[0] < bDis[0]) 
                 {
-                    if (item < bDis[y])
-                    {
-                        disAndTopic.Add(sport);
-                    }
+                    listResut[countResultIndex] = sport;
+                    aDis[0] = 100000000;
                 }
+                else
+                {
+                    listResut[countResultIndex] = fairyTale;
+                    bDis[0] = 100000000;
+                }
+
+                countResultIndex++;
             }
 
-            foreach (double item in bDis)
-            {
-                for (int y = 0; y < aDis.Length; y++)
-                {
-                    if (item < aDis[y])
-                    {
-                        disAndTopic.Add(fairyTale);
-                    }
-                }
-            }
 
-            return disAndTopic;
+            return listResut;
         }
 
-        private string Predict(List<string> neighbor) 
+        private string Predict(string[] neighbor) 
         {
             string myPredict = "";
             int sportCount = 0;
