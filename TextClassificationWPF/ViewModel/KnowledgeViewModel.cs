@@ -15,6 +15,8 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft;
 using System.Text.RegularExpressions;
+using iTextSharp.text.pdf.parser;
+using iTextSharp.text.pdf;
 
 namespace TextClassificationWPF.ViewModel
 {
@@ -152,9 +154,22 @@ namespace TextClassificationWPF.ViewModel
             if (result == true)
             {
                 string filename = dlg.FileName;
-                string text = File.ReadAllText(filename);
+                string text = string.Empty;
+                if (filename.EndsWith(".pdf")) 
+                {
+                    PdfReader reader = new PdfReader(filename);
+                    for (int page = 1; page <= reader.NumberOfPages; page++)
+                    {
+                        text += PdfTextExtractor.GetTextFromPage(reader, page);
+                    }
+                    reader.Close();
+                }
+                else
+                {
+                    text = File.ReadAllText(filename);
+                }
+                
                 KNN knn = new KNN(knowledge);
-
                 string predict = knn.PredictTopic(text);
                 MessageBox.Show(predict);
             }

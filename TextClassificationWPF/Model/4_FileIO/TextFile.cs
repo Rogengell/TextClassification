@@ -1,4 +1,6 @@
-﻿using System;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,18 +16,20 @@ namespace TextClassificationWPF.FileIO
 
         const string FOLDERA = "ClassA";
         const string FOLDERB = "ClassB";
-        public TextFile(string fileType):base(fileType)
+        public TextFile(params string[] fileType):base(fileType)
         {
             PROJECTPATH = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Classes\\";
         }
         public override List<string> GetAllFileNames(string folderName)
         {
             List<string> fileNames = new List<string>();
-            string[] paths = Directory.GetFiles(PROJECTPATH + folderName, "*."+GetFileType());
-           
-            foreach (string path in paths)
+            for (int i = 0; i < GetFileType().Count(); i++)
             {
-                fileNames.Add(path);
+                string[] paths = Directory.GetFiles(PROJECTPATH + folderName, "*." + GetFileType()[i]);
+                foreach (string path in paths)
+                {
+                    fileNames.Add(path);
+                }
             }
             return fileNames;
         }
@@ -37,15 +41,39 @@ namespace TextClassificationWPF.FileIO
 
         public override string GetAllTextFromFileA(string path)
         {
-            string text = File.ReadAllText(path);
-
+            string text = string.Empty;
+            if (path.EndsWith(".pdf")) 
+            {
+                PdfReader reader = new PdfReader(path);
+                for (int page = 1; page <= reader.NumberOfPages; page++)
+                {
+                    text += PdfTextExtractor.GetTextFromPage(reader, page);
+                }
+                reader.Close();
+            }
+            else
+            {
+                text = File.ReadAllText(path);
+            }
             return text;
         }
 
         public override string GetAllTextFromFileB(string path)
         {
-            string text = File.ReadAllText(path);
-
+            string text = string.Empty;
+            if (path.EndsWith(".pdf"))
+            {
+                PdfReader reader = new PdfReader(path);
+                for (int page = 1; page <= reader.NumberOfPages; page++)
+                {
+                    text += PdfTextExtractor.GetTextFromPage(reader, page);
+                }
+                reader.Close();
+            }
+            else
+            {
+                text = File.ReadAllText(path);
+            }
             return text;
         }
     }

@@ -28,7 +28,14 @@ namespace TextClassificationWPF.Business
                 {
                     string cleanWord = RemovePunctuation(token);
                     cleanWord = cleanWord.ToLower();
-                    words.Add(cleanWord);
+                    string[] allWords = Regex.Split(cleanWord, "(\\d+|[A-Za-z^'^´^`^’]+)|, ");
+                    foreach  (string item in allWords)
+                    {
+                        if (item != "" && item != " ")
+                        {
+                            words.Add(item);
+                        }
+                    }
                 }
             }
             return words;

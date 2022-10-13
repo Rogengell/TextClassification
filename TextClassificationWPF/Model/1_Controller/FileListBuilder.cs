@@ -22,7 +22,7 @@ namespace TextClassificationWPF.Controller
         {
             _fileLists = new FileLists();
 
-            _fileAdapter = new TextFile("txt");
+            _fileAdapter = new TextFile("txt","pdf");
         }
 
         public override FileLists GetFileLists()

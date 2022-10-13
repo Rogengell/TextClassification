@@ -21,7 +21,7 @@ namespace TextClassificationWPF.Controller
 
         public KnowledgeBuilder()
         {
-            _fileAdapter = new TextFile("txt");
+            _fileAdapter = new TextFile("txt","pdf");
             _knowledge = new Knowledge();
         }
 
