@@ -193,7 +193,7 @@ namespace Test
         public void TestVectorPosetionThree()
         {
             // arragne
-            bool expected = true;
+            bool expected = false;
 
             // act
             KnowledgeBuilder kb = new KnowledgeBuilder();

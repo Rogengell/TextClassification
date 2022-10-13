@@ -10,13 +10,13 @@ namespace TextClassificationWPF.FileIO
 {
     public class TextFile:FileAdapter
     {
-        const string PROJECTPATH = "C:\\Users\\rogen\\source\\repos\\TextClassification\\TextClassificationWPF\\Classes\\";
+        string PROJECTPATH;
 
         const string FOLDERA = "ClassA";
         const string FOLDERB = "ClassB";
         public TextFile(string fileType):base(fileType)
         {
-            
+            PROJECTPATH = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Classes\\";
         }
         public override List<string> GetAllFileNames(string folderName)
         {

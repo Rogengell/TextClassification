@@ -147,8 +147,7 @@ namespace TextClassificationWPF.ViewModel
                 return;
             }
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.DefaultExt = ".txt";
-            dlg.InitialDirectory = "C:\\Users\\rogen\\source\\repos\\extClassification\\TextClassificationWPF\\Classes\\ClassC";
+            dlg.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName+"\\Classes\\ClassC";
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
