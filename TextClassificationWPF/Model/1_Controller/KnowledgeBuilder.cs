@@ -103,16 +103,16 @@ namespace TextClassificationWPF.Controller
             for (int i = 0; i < list.Count; i++)
             {
                 List<bool> vector = new List<bool>();
+                string text;
+                if (folderName.Equals("ClassA")){
+                    text = _fileAdapter.GetAllTextFromFileA(_fileLists.GetA()[i]);
+                }
+                else{
+                    text = _fileAdapter.GetAllTextFromFileB(_fileLists.GetB()[i]);
+                }
+                List<string> wordsInFile = Tokenization.Tokenize(text);
                 foreach (string key in _bagOfWords.GetAllWordsInDictionary())
                 {
-                    string text;
-                    if (folderName.Equals("ClassA")){
-                        text = _fileAdapter.GetAllTextFromFileA(_fileLists.GetA()[i]);
-                    }
-                    else{
-                        text = _fileAdapter.GetAllTextFromFileB(_fileLists.GetB()[i]);
-                    }
-                    List<string> wordsInFile = Tokenization.Tokenize(text);
                     if (wordsInFile.Contains(key)){
                         vector.Add(true);
                     }
