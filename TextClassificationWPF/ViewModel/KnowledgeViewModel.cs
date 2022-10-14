@@ -141,22 +141,34 @@ namespace TextClassificationWPF.ViewModel
             GetFileNames();
         }
 
-
+        /**
+         * Here we select a file from the file explore
+         * Then read the file
+         * Then create KNN
+         * Then predict
+         */
         private void FNNPredict(object parameter) 
         {
             if (knowledge == null)
             {
                 return;
             }
+            // Create a file dialog to acces the file explore
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            // Choose where to start the explore
             dlg.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName+"\\Classes\\ClassC";
+            // Open file explore
             Nullable<bool> result = dlg.ShowDialog();
+            // Tjek if the there was selected a file
             if (result == true)
             {
+                // Get file name
                 string filename = dlg.FileName;
                 string text = string.Empty;
+                // Cheak file type
                 if (filename.EndsWith(".pdf")) 
                 {
+                    // Read pdf file
                     PdfReader reader = new PdfReader(filename);
                     for (int page = 1; page <= reader.NumberOfPages; page++)
                     {
@@ -166,12 +178,15 @@ namespace TextClassificationWPF.ViewModel
                 }
                 else
                 {
+                    // Read other file
                     text = File.ReadAllText(filename);
                 }
-                
+                // create KNN
                 KNN knn = new KNN(knowledge);
+                // Predict the text type
                 string predict = knn.PredictTopic(text);
-                MessageBox.Show(predict);
+                // Show the type
+                MessageBox.Show("The file is: "+predict);
             }
         }
 
