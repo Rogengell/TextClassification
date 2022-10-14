@@ -11,6 +11,7 @@ namespace TextClassificationWPF.FileIO
         private List<string> _fileType;
         public FileAdapter(params string[] fileType)
         {
+            // Create a list of file types
             _fileType = new List<string>();
             for (int i = 0; i < fileType.Length; i++)
             {

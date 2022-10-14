@@ -54,7 +54,7 @@ namespace TextClassificationWPF.Business
             // Here we trim the spase from the token
             token.Trim();
             // here we create a char array of symbols to remove
-            char[] punctuations = { '.', ',', '"', '“', '”','!', '?', '\n', ':' , ';' , '/' , '$' , '[' , ']' , '(' , ')' , '-' , '£'};
+            char[] punctuations = { '-','_', '.', ',', '"', '“', '”','!', '?', '\n', ':' , ';' , '/' , '$' , '[' , ']' , '(' , ')', '%', '£'};
             // Here we create a char array from the token
             char[] tokenChar = token.ToCharArray();
             // Here we create the token we will be returning

@@ -22,6 +22,7 @@ namespace TextClassificationWPF.FileIO
         }
         public override List<string> GetAllFileNames(string folderName)
         {
+            // Goes throug all types and saves the pathes
             List<string> fileNames = new List<string>();
             for (int i = 0; i < GetFileType().Count(); i++)
             {
@@ -42,6 +43,7 @@ namespace TextClassificationWPF.FileIO
         public override string GetAllTextFromFileA(string path)
         {
             string text = string.Empty;
+            // Tjeck if it is a PDF
             if (path.EndsWith(".pdf")) 
             {
                 PdfReader reader = new PdfReader(path);
@@ -61,6 +63,7 @@ namespace TextClassificationWPF.FileIO
         public override string GetAllTextFromFileB(string path)
         {
             string text = string.Empty;
+            // Tjeck if it is a PDF
             if (path.EndsWith(".pdf"))
             {
                 PdfReader reader = new PdfReader(path);

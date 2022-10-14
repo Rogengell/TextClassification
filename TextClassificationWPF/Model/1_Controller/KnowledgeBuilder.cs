@@ -111,6 +111,7 @@ namespace TextClassificationWPF.Controller
                     text = _fileAdapter.GetAllTextFromFileB(_fileLists.GetB()[i]);
                 }
                 List<string> wordsInFile = Tokenization.Tokenize(text);
+                // lowers the foreach fron under string text to under wordInFile for performance
                 foreach (string key in _bagOfWords.GetAllWordsInDictionary())
                 {
                     if (wordsInFile.Contains(key)){
