@@ -340,14 +340,10 @@
     <Resource Include="Classes\ClassA\dailymirrornfl.txt" />
     <Resource Include="Classes\ClassA\Denmark%27s 2022 World Cup kit.txt" />
     <Resource Include="Classes\ClassA\Erik Ten Hag praised.txt" />
-    <Resource Include="Classes\ClassA\FIFA World Cup 2022.txt" />
-    <Resource Include="Classes\ClassA\It has been a glorious couple.txt" />
     <Resource Include="Classes\ClassA\sunsportsboxing.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Classes\ClassB\HanselAndGretel.txt" />
-    <Resource Include="Classes\ClassB\Pumpelstiltskin.txt" />
-    <Resource Include="Classes\ClassB\Rapunzel.txt" />
     <Resource Include="Classes\ClassB\Snow White.txt" />
     <Resource Include="Classes\ClassB\The Frog Prince.txt" />
     <Resource Include="Classes\ClassB\The Golden Fish.txt" />
@@ -377,9 +373,6 @@
     <Resource Include="Classes\ClassA\eSports Could it become more popular.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Classes\ClassA\Golf news.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Classes\ClassA\Japanese Grand Prix.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -392,19 +385,34 @@
     <Resource Include="Classes\ClassA\Paris Saint Germain.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Classes\ClassA\Scotland 0-1 Republic of Ireland.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Classes\ClassB\Old Sultan.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Classes\ClassB\The Elven and the Shomaler.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Classes\ClassB\The Golend Goose.txt" />
+    <Resource Include="Classes\ClassB\The Six Swans.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Classes\ClassB\The Six Swans.txt" />
+    <Resource Include="Classes\ClassC\The Golend Goose.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\Scotland 0-1 Republic of Ireland.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\Rapunzel.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\Pumpelstiltskin.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\Old Sultan.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\It has been a glorious couple.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\Golf news.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Classes\ClassC\FIFA World Cup 2022.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.3.44\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.3.44\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
